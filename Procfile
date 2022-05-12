@@ -1,1 +1,1 @@
-web:node java.js
+web: node java.js
