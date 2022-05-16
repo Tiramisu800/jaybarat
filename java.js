@@ -5,7 +5,7 @@ const express =require('express')
 const mongoose = require('mongoose')
 const { createServer } = require('http')
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 /* for to validate and authentication*/
 const passport = require('passport')
@@ -133,13 +133,28 @@ app.delete('/logout', (req,res)=>{
 } )
 
 ///---MongoDB connect---///
-mongoose.connect('mongodb+srv://jaypark:jaypark18@cluster0.kj7nh.mongodb.net/Jaybaraqat?retryWrites=true&w=majority', {
+/*mongoose.connect('mongodb+srv://jaypark:jaypark18@cluster0.kj7nh.mongodb.net/Jaybaraqat?retryWrites=true&w=majority', {
     useNewUrlParser: true,
 }).then(()=>console.log('MongoDb connected'))
-    .catch(e => console.log(e))
+    .catch(e => console.log(e))*/
 
-const server = createServer(app)
-server.listen(port, ()=>console.log('server is up.'))
+ async function start() {
+     try {
+       await mongoose.connect(
+           'mongodb+srv://jaypark:jaypark18@cluster0.kj7nh.mongodb.net/Jaybaraqat?retryWrites=true&w=majority',
+         {
+           useNewUrlParser: true
+         }
+       )
+         const server = createServer(app)
+         server.listen(PORT, ()=>console.log('server is up.'))
+     } catch (e) {
+      console.log(e)
+     }
+   }
+
+ start()
+
 // Load CSS
 
 
