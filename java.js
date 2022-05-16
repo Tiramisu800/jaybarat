@@ -3,7 +3,7 @@ require('dotenv').config()
 //Requests
 const express =require('express')
 const mongoose = require('mongoose')
-const { createServer } = require('https')
+//const { createServer } = require('https')
 
 const PORT = process.env.PORT || 3000;
 
@@ -146,8 +146,8 @@ app.delete('/logout', (req,res)=>{
            useNewUrlParser: true
          }
        )
-         const server = createServer(app)
-         server.listen(PORT, ()=>console.log('server is up.'))
+         //const server = createServer(app)
+         app.listen(PORT, ()=>console.log('app is up.'))
      } catch (e) {
       console.log(e)
      }
