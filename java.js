@@ -4,9 +4,10 @@ require('dotenv').config()
 const express =require('express')
 const mongoose = require('mongoose')
 //const { createServer } = require('https')
+const bodyParser = require('body-parser')
+
 const app = express()
 
-const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const PORT = process.env.PORT || 3000;
