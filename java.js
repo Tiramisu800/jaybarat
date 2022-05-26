@@ -141,7 +141,13 @@ app.delete('/logout', (req,res)=>{
     useNewUrlParser: true,
 }).then(()=>console.log('MongoDb connected'))
     .catch(e => console.log(e))*/
-
+const swaggerUi = require('swagger-ui-express')
+swaggerDocument = require('./swagger.json');
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
  async function start() {
      try {
        await mongoose.connect(
